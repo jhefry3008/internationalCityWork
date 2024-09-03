@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $telefono = htmlspecialchars($_POST['Telefono']);
         $email = htmlspecialchars($_POST['Correo']);
         $mensaje = htmlspecialchars($_POST['Mensaje']);
-        $asunto = "Factura para $empresa";
+        $asunto = "comprobante de compra para  $empresa";
         $mensajeCorreo = "
 <!DOCTYPE html>
 <html lang='es'>
