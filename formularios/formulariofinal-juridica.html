@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Persona_Juridica_International_City_Work</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../img/internacional.png">
+    <link rel="stylesheet" href="../css/formulario_servicios.css">
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+
+    <!-- Stylesheet -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="form-container">
+        <form id="juridica-final-form"  action="../php/envio.php" method="post">
+            <input type="hidden" name="tipo_cliente" value="juridica">
+           
+            <h2 class="tipo-persona">Persona Jurídica</h2>
+            <label for="Servicio-Seleccionado" readonly>Servicio que desea consultar:</label>
+            <select id="juridica-service" name="Servicio" disabled>
+                <option value="">Seleccione un servicio</option>
+                <option value="publicaciones" readonly>Publicaciones</option>
+            </select>
+
+          
+            <input type="hidden" name="Producto" value="Libros">
+
+            <label for="company-name">Nombre de la Empresa:</label>
+            <input type="text" id="company-name" name="Empresa" readonly>
+
+            <label for="nit">NIT:</label>
+            <input type="text" id="nit" name="nit"  readonly>
+
+            <label for="address">Dirección:</label>
+            <input type="text" id="address-juridica" name="Direccion"  readonly>
+
+            <label for="city">Ciudad:</label>
+            <input type="text" id="city-juridica" name="Ciudad" readonly>
+
+            <label for="phone">Número de Teléfono:</label>
+            <input type="tel" id="phone-juridica" name="Telefono" readonly>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email-juridica" name="Correo" readonly>
+
+            <label for="message">Mensaje:</label>
+            <input type="text" id="message-juridica" name="Mensaje" readonly placeholder="Dinos qué quieres hacer">
+
+            <div>
+                <p class="autorizacion">¿Autoriza a International City Work., al tratamiento de sus datos en conformidad con la Política de Manejo de Datos Personales?</p>
+                <a href="../pdf/Politica-manejo-de-datos.pdf" target="_blank">Política de Manejo de Datos</a>
+            </div>
+            <br>
+
+            <label for="data-authorization-juridica">
+                <input type="checkbox" id="data-authorization-juridica" name="Autorizacion de Datos" required>
+                Autorizo el uso de mis datos
+            </label><br>
+
+            <button type="submit" id="submit-button-juridica" >Enviar</button>
+        </form>
+        <script type="text/javascript" src="../js/formulariofinaljuridica.js"></script> 
+    </div>
+          
+
+</body>
+</html>

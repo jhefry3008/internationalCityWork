@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias por tu envío!</title>
+    <link rel="stylesheet" href="styles_gracias.css">
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="thank-you-card">
+            <h1>Realiza tu pago con éxito</h1>
+            <p>Nombre<br>Cuenta<br>Banco</p>
+            <a id="pagar-link" href="#">
+                <button id="pagar-btn">Pagar</button>
+            </a>
+        </div>
+    </div>
+    <script>
+   document.addEventListener("DOMContentLoaded", function() {
+    const formType = localStorage.getItem("formType");
+    console.log("Form Type:", formType); // Verifica el valor de formType
+    const pagarLink = document.getElementById("pagar-link");
+
+    if (formType === "juridica") {
+        pagarLink.href = "formularios/formulariofinal-juridica.html";
+    } else if (formType === "natural") {
+        pagarLink.href = "formularios/formulariofinal-natural.html";
+    } else {
+        pagarLink.href = "index.html";
+    }
+});
+
+    </script>
+    
+</body>
+</html>

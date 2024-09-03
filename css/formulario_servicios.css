@@ -1,0 +1,146 @@
+
+@font-face {
+    font-family: 'bauhaus';
+    src: url('../fonts/Bauhaus.woff2') format('woff2'),  /* Modern browsers */
+         url('../fonts/Bauhaus.woff') format('woff'),    /* Legacy modern browsers */
+         url('../fonts/Bauhaus_.ttf') format('truetype'); /* Safari, Android, iOS */
+    font-weight: normal;
+    font-style: normal;
+}
+
+#document-type{
+    color: black;
+}
+
+#natural-service {
+    color: black;
+}
+#juridica-service {
+    color: black;
+}
+
+.form-container {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #06779d11;
+    border: 3px solid rgba(108, 180, 228, 0.534); ;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 10px 10px 10px rgba(108, 180, 228, 0.534);
+    font-family: 'bauhaus';
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos horizontalmente */
+
+}
+
+
+
+
+label {
+    font-family: 'bauhaus';
+    text-align: center;
+}
+
+input[type="text"], input[type="date"], input[type="tel"], input[type="email"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 3px solid #d86b2c91;
+    border-radius: 8px;
+    font-family: 'bauhaus';
+    box-sizing: border-box;
+    background-color: white;
+    color: black;
+}
+.autorizacion{
+    color: black;
+    font-size: 20px;
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'bauhaus';
+}
+
+button:hover {
+    background-color: #0056b3;
+    font-family: 'bauhaus';
+}
+
+.form-step {
+
+    font-family: 'bauhaus';
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 5px;
+    font-family: 'bauhaus';
+}
+
+.icono i {
+    margin-left: 8px; /* Espacio entre el ícono y el texto */
+    color: #f96946;
+    font-size: 30px; /* Tamaño del ícono, ajústalo según lo necesario */
+  }
+
+.icono p{
+    font-family: 'bauhaus';
+  }
+
+button a{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'bauhaus';
+}
+button a:hover {
+    background-color: #0056b3;
+    font-family: 'bauhaus';
+    color: white;
+}
+
+#initial-step.form-step {
+    display: flex;
+    flex-direction: column;
+}
+
+#initial-step.form-step .option-group {
+    align-items: center;
+    margin-bottom: 5px; /* Espacio entre cada opción */
+}
+
+#initial-step.form-step label {
+    margin-left: 5px; /* Espacio entre el radio button y la etiqueta */
+}
+
+.tipo-persona{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    color:  #06779d;
+}
+#person-type-form {
+    display: flex;
+    flex-direction: column;
+ 
+}
+
+hr{
+    height: 5px;
+    width: 100px;
+    text-align: center;
+    position: relative;
+    background: #f96946;
+    margin: 0;
+    margin-bottom: 30px;
+    border: 0;
+}
+

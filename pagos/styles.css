@@ -1,0 +1,188 @@
+/* Estilos personalizados para la página de compra de libros */
+body, html {
+	/*font-family: 'Raleway', sans-serif;*/
+	text-rendering: optimizeLegibility !important;
+	-webkit-font-smoothing: antialiased !important;
+	color: whitesmoke;
+	font-weight: 300;
+
+
+}
+.books-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.book-card {
+    box-shadow: 10px 10px 10px rgba(108, 180, 228, 0.534);
+    border: 3px solid rgba(108, 180, 228, 0.534);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+
+}
+
+.book-card img {
+    border-radius: 10px;
+}
+
+.book-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.book-card h5 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.book-card p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.payment-options {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+}
+
+.payment-options img {
+    max-width: 50px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.payment-options img:hover {
+    transform: scale(1.1);
+}
+
+.payment-options img.active {
+    border: 2px solid  #f96946;
+    border-radius: 5px;
+}
+
+
+.btn-pay {
+    margin-top: 20px;
+}
+
+.content-container {
+    margin-top: 100px; /* Ajusta este valor según la altura de tu nav */
+}
+
+#menu.navbar-default {
+    background-color: rgb(81, 123, 136) !important;
+    padding: 10px 0 !important;
+}
+
+.book-options {
+    margin-top: 10px;
+}
+
+.book-option {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 0px 10px 0px 10px;
+}
+
+.book-option.selected {
+    background-color: #f96946; /* Cambia el color de fondo a verde */
+    color: #fff; /* Cambia el color del texto a blanco */
+    border-color: #f96946; /* Cambia el color del borde para que coincida */
+}
+.title-center {
+    text-align: center;
+    margin-top: 20px;
+}
+h5{
+    color: #06779d;
+    font-family: 'bauhaus';
+}
+h4{
+    color: #06779d;
+    font-family: 'bauhaus';
+}
+
+h6{
+    color: #06779d;
+    font-family: 'bauhaus';
+}
+
+.letra-boton{
+    color: white;
+    margin: 2px 2px 2px 2px;
+}
+
+.titulo-separador{
+    width: 100%; /* Ajusta el ancho del hr según sea necesario */
+
+    
+}
+
+
+/* modal*/
+
+.payment-options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.payment-options img {
+    width: 80px; /* Tamaño de las imágenes */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.payment-options img:hover {
+    transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+.payment-options img.active {
+    border: 2px solid #007bff; /* Borde azul cuando está seleccionado */
+    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.5); /* Sombra más intensa cuando está seleccionado */
+    transform: scale(1.1);
+}
+
+.modal-title {
+    text-align: center; /* Centrar el título del modal */
+    font-weight: bold;
+}
+
+#pay-btn {
+    background-color: #f96946; /* Color de fondo verde para el botón de pago */
+    border-color: #f96946;
+}
+
+#pay-btn:hover {
+    background-color: #f5542b; /* Cambio de color al pasar el mouse */
+    border-color: #f5542b;
+}
+
+.total-payment {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.modal-body{
+    background: rgba(81, 123, 136, 0.679)
+}
+
