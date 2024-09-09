@@ -101,6 +101,7 @@ $resultLibros = $conn->query($queryLibros);
     <title>Administrar Libros</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="../img/internacional.png">
     <style>
         .custom-container {
             margin-top: 20px;
@@ -147,7 +148,7 @@ $resultLibros = $conn->query($queryLibros);
             </table>
         </div>
 
-        <!-- Formulario para crear un nuevo libro -->
+        <!-- Formulario para crear un nuevo libro 
         <div class="mb-4">
             <h2>Crear Nuevo Libro</h2>
             <form method="post" enctype="multipart/form-data">
@@ -169,7 +170,7 @@ $resultLibros = $conn->query($queryLibros);
                 </div>
                 <button type="submit" class="btn btn-primary">Crear Libro</button>
             </form>
-        </div>
+        </div>-->
 
         <!-- Botones de navegación -->
         <div class="text-center">

@@ -58,11 +58,12 @@ h1.mt-4.mb-4 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    color: #06779d;
 }
 
 /* Estilos para el área de administrador */
 .admin {
- 
+    background-color: #06779d;
     border-radius: 8px;
     padding: 20px;
     margin: 20px 0;
@@ -70,8 +71,9 @@ h1.mt-4.mb-4 {
 }
 
 .admin h2 {
+    background-color: #06779d;
     margin-bottom: 20px;
-    color: #343a40;
+    color: white;
     text-align: center;
 }
 
@@ -79,6 +81,7 @@ h1.mt-4.mb-4 {
     display: flex;
     justify-content: center;
     gap: 10px; /* Espacio entre botones */
+      background-color: #06779d;
 }
 
 .opciones-container a {

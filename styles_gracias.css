@@ -2,24 +2,31 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/internacional.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.thank-you-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.thank-you-container {
-    text-align: center;
-}
-
 .thank-you-card {
     background-color: #fff;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     margin: auto;
+    box-shadow: 10px 10px 10px rgba(108, 180, 228, 0.534);
+    border: 3px solid rgba(108, 180, 228, 0.534);
+    border-radius: 10px;
+    text-align: center;
 }
 
 .thank-you-card h1 {
@@ -34,16 +41,16 @@ body {
     margin-bottom: 20px;
 }
 
-.btn {
-    display: inline-block;
+#pagar-btn {
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color: #06779d;
     color: #fff;
-    text-decoration: none;
+    border: none;
     border-radius: 5px;
     font-weight: bold;
+    cursor: pointer;
 }
 
-.btn:hover {
-    background-color: #218838;
+#pagar-btn:hover {
+    background-color: #06779d80;
 }

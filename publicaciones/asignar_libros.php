@@ -96,6 +96,7 @@ if (isset($_SESSION['cliente_id'])) {
     <title>Asignar Libros a Clientes</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="../img/internacional.png">
     <style>
         .cliente, .libros-asignados, .libros-disponibles {
             margin-bottom: 20px;

@@ -22,6 +22,7 @@ $rol = $_SESSION['rol'];  // Asumiendo que guardaste el rol del usuario en la se
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="../img/internacional.png">
     <!-- Incluir tu archivo CSS -->
     <link href="styles.css" rel="stylesheet">
 </head>
@@ -78,6 +79,8 @@ $rol = $_SESSION['rol'];  // Asumiendo que guardaste el rol del usuario en la se
 
         <div class="logout">
             <a href="logout.php" class="btn btn-danger">Cerrar Sesión</a>
+            <a href="cambiar_contrasena.php" class="btn btn-primary">Cambiar Contraseña</a>
+
         </div>
     </div>
 

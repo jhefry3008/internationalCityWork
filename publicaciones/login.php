@@ -27,27 +27,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <!-- Incluir Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../img/internacional.png">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .login-container {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        .container {
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: auto;
         }
+
+        .login-container {
+            background-color: #fff;
+            padding: 30px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 10px 10px 10px rgba(108, 180, 228, 0.534);
+            border: 3px solid rgba(108, 180, 228, 0.534);
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 100px;
+
+        }
+
         .login-container h2 {
             margin-bottom: 20px;
+            color: #06779d;
         }
+        .form-group label{
+            color: #06779d;
+        }
+       
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="login-container">
@@ -76,4 +97,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

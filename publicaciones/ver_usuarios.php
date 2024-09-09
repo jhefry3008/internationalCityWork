@@ -9,7 +9,6 @@ if ($_SESSION['rol'] !== 'admin') {
 }
 
 // Procesar eliminación de usuario
-// Procesar eliminación de usuario
 if (isset($_POST['eliminar_usuario_id'])) {
     $usuario_id = $_POST['eliminar_usuario_id'];
 
@@ -19,10 +18,10 @@ if (isset($_POST['eliminar_usuario_id'])) {
     $stmtEliminarLibros->bind_param('i', $usuario_id);
 
     if ($stmtEliminarLibros->execute()) {
-        // Luego, elimina el usuario
+        // Luego, elimina el usuario de la tabla 'usuarios'
         $queryEliminarUsuario = "DELETE FROM usuarios WHERE id = ?";
-        $stmtEliminarUsuario = $conn->prepare($queryEliminarUsuario);
-        $stmtEliminarUsuario->bind_param('i', $usuario_id);
+        $stmtEliminarUsuario = $conn->prepare($queryEliminarUsuario); // Añade esta línea para preparar la consulta
+        $stmtEliminarUsuario->bind_param('i', $usuario_id); // Asegúrate de enlazar correctamente el parámetro
 
         if ($stmtEliminarUsuario->execute()) {
             echo "<div class='alert alert-success' role='alert'>Usuario y libros eliminados correctamente.</div>";
@@ -34,10 +33,10 @@ if (isset($_POST['eliminar_usuario_id'])) {
     }
 }
 
-
-// Obtener la lista de usuarios
-$queryUsuarios = "SELECT id, nombre_usuario, rol FROM usuarios";
+// Obtener la lista de usuarios con todos los campos nuevos
+$queryUsuarios = "SELECT id, nombre_usuario, rol, nombre_cliente, telefono, email FROM usuarios";
 $resultUsuarios = $conn->query($queryUsuarios);
+
 ?>
 
 <!DOCTYPE html>
@@ -46,8 +45,8 @@ $resultUsuarios = $conn->query($queryUsuarios);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Usuarios</title>
-    <!-- Incluir Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../img/internacional.png">
     <link rel="stylesheet" href="css/style.css">
     <style>
         .table-container {
@@ -63,40 +62,45 @@ $resultUsuarios = $conn->query($queryUsuarios);
         <h1 class="my-4">Usuarios Registrados</h1>
 
         <div class="table-container">
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Nombre de Usuario</th>
-                        <th>Rol</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($usuario = $resultUsuarios->fetch_assoc()): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($usuario['nombre_usuario']); ?></td>
-                            <td><?php echo htmlspecialchars($usuario['rol']); ?></td>
-                            <td>
-                                <form method="post" style="display:inline;">
-                                    <input type="hidden" name="eliminar_usuario_id" value="<?php echo $usuario['id']; ?>">
-                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-        </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Username</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($usuario = $resultUsuarios->fetch_assoc()): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($usuario['nombre_cliente']); ?></td>
+                    <td><?php echo htmlspecialchars($usuario['nombre_usuario']); ?></td>
+                    <td><?php echo htmlspecialchars($usuario['telefono']); ?></td>
+                    <td><?php echo htmlspecialchars($usuario['email']); ?></td>
+                    <td><?php echo htmlspecialchars($usuario['rol']); ?></td>
+                    <td>
+                        <form method="post" style="display:inline;">
+                            <input type="hidden" name="eliminar_usuario_id" value="<?php echo $usuario['id']; ?>">
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                        <a href="editar_usuario.php?id=<?php echo $usuario['id']; ?>" class="btn btn-primary btn-sm">Editar</a>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</div>
 
         <div class="botones text-center">
             <a href="index.php" class="btn btn-secondary">Volver</a>
         </div>
     </div>
 
-    <!-- Incluir jQuery y Bootstrap JS al final del documento -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-

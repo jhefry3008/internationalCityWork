@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <li><strong>Método de Pago:</strong> $metodoPago</li>
        
     </ul>
-    <h2 style='text-align: center;'>En unos segundos nos pondremos en contacto con usted</h2>
+    <h2 style='text-align: center;'>Gracias por confiar en nosotros,nos pondremos en contacto con usted</h2>
 </body>
 </html>
         ";
@@ -116,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><strong>Método de Pago:</strong> $metodoPago</li>
                 
             </ul>
-            <h2 style='text-align: center;'>En unos segundos nos pondremos en contacto con usted</h2>
+            <h2 style='text-align: center;'>Gracias por confiar en nosotros,nos pondremos en contacto con usted</h2>
         </body>
         </html>
         ";
