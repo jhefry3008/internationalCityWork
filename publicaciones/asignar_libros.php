@@ -49,13 +49,9 @@ if (isset($_POST['eliminar_libro_id']) && isset($_SESSION['cliente_id'])) {
     }
 }
 
-// Obtener la lista de clientes
-$queryClientes = "SELECT id, nombre_usuario FROM usuarios WHERE rol = 'cliente'";
+// Consulta para obtener los clientes, ordenados del ID más alto al más bajo
+$queryClientes = "SELECT id, nombre_usuario FROM usuarios WHERE rol = 'cliente' ORDER BY id DESC";
 $resultClientes = $conn->query($queryClientes);
-
-// Obtener libros disponibles
-$queryLibrosDisponibles = "SELECT id, titulo FROM libros";
-$resultLibrosDisponibles = $conn->query($queryLibrosDisponibles);
 
 // Obtener libros asignados al cliente seleccionado
 $librosAsignados = [];
@@ -63,7 +59,7 @@ $clienteSeleccionadoNombre = '';
 
 if (isset($_SESSION['cliente_id'])) {
     $cliente_id = $_SESSION['cliente_id'];
-    
+
     // Obtener nombre del cliente seleccionado
     $queryClienteSeleccionado = "SELECT nombre_usuario FROM usuarios WHERE id = ?";
     $stmtClienteSeleccionado = $conn->prepare($queryClienteSeleccionado);
@@ -85,6 +81,20 @@ if (isset($_SESSION['cliente_id'])) {
     $stmtLibrosAsignados->execute();
     $resultLibrosAsignados = $stmtLibrosAsignados->get_result();
     $librosAsignados = $resultLibrosAsignados->fetch_all(MYSQLI_ASSOC);
+
+    // Obtener libros disponibles excluyendo los ya asignados al cliente seleccionado
+    $queryLibrosDisponibles = "
+        SELECT id, titulo 
+        FROM libros 
+        WHERE id NOT IN (
+            SELECT libro_id 
+            FROM cliente_libros 
+            WHERE cliente_id = ?
+        )";
+    $stmtLibrosDisponibles = $conn->prepare($queryLibrosDisponibles);
+    $stmtLibrosDisponibles->bind_param('i', $cliente_id);
+    $stmtLibrosDisponibles->execute();
+    $resultLibrosDisponibles = $stmtLibrosDisponibles->get_result();
 }
 ?>
 
@@ -178,7 +188,6 @@ if (isset($_SESSION['cliente_id'])) {
             ?>
         <?php endif; ?>
     </div>
-
 
     <!-- Incluir jQuery y Bootstrap JS al final del documento -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

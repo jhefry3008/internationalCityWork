@@ -53,6 +53,7 @@ if (isset($_POST['actualizar_usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuario</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../img/internacional.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

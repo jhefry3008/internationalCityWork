@@ -126,7 +126,7 @@ $resultLibros = $conn->query($queryLibros);
                         <th>Contenido</th>
                         <th>PDF</th>
                         <th>Portada</th>
-                        <th>Acciones</th>
+                          <!--<th>Acciones</th>-->
                     </tr>
                 </thead>
                 <tbody>
@@ -136,12 +136,12 @@ $resultLibros = $conn->query($queryLibros);
                             <td><?php echo htmlspecialchars($libro['contenido']); ?></td>
                             <td><a href="<?php echo htmlspecialchars($libro['pdf_url']); ?>" target="_blank" class="btn btn-info btn-sm">Ver PDF</a></td>
                             <td><img src="<?php echo htmlspecialchars($libro['portada_url']); ?>" alt="Portada"></td>
-                            <td>
+                            <!-- <td>
                                 <form method="post" style="display:inline;">
                                     <input type="hidden" name="eliminar_libro_id" value="<?php echo $libro['id']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                 </form>
-                            </td>
+                            </td>-->
                         </tr>
                     <?php endwhile; ?>
                 </tbody>

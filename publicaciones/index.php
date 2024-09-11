@@ -27,7 +27,7 @@ $rol = $_SESSION['rol'];  // Asumiendo que guardaste el rol del usuario en la se
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <div class="container-index">
         <h1 class="mt-4 mb-4">Bienvenido, <?php echo isset($_SESSION['nombre_usuario']) ? htmlspecialchars($_SESSION['nombre_usuario']) : 'Invitado'; ?>!</h1>
 
         <!-- Si el usuario es administrador -->

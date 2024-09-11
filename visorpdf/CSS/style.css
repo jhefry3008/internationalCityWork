@@ -1,116 +1,163 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
-*{
-	padding: 0;
-	margin:0;
-	box-sizing: border-box;
-	color: #eee;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #eee;
 }
 
-button{
-	cursor: pointer;
-	padding: 2px 5px;
-	color: #ccc;
-	background: transparent;
-	border: none;
-	outline: none;
+button {
+    cursor: pointer;
+    padding: 2px 5px;
+    color: #ccc;
+    background: transparent;
+    border: none;
+    outline: none;
 }
 
-body{
-	font-family: 'Lato', sans-serif;
-	background-color:rgb(192, 222, 228);
-}
-
-main{
-	width: 100%;
-	min-height: 90vh;
-	display:flex;
-	flex-direction: column;
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
 	justify-content: center;
-	align-items: center;
-	padding: 20px;
-	
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/internacional.png);
+    background-size: cover;
+    background-position: center;
 }
 
-main h3{
-	text-align: center;
-	width: 100%;
-	word-spacing: 0.5rem;
-	font-size: 2rem;
-	color: #bbbbbb;
+main {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.pdf-viewer{
-	background-color: #333;
-	background-color: #fff;
-	margin: auto;
-	border-radius: 30px;
+main h3 {
+    text-align: center;
+    width: 100%;
+    word-spacing: 0.5rem;
+    font-size: 2rem;
+    color: #bbbbbb;
 }
 
-.hidden{
-	display:none;
+.pdf-viewer {
+    background-color: #fff;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    margin: 0 auto;
+	border-radius: 10px;
 }
 
-footer{
-	position:sticky;
-	bottom:0;
-	height: 10vh;
-	background-color:#000000;
+.hidden {
+    display: none;
 }
 
-.pagination{
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	color: #eee;
-	font-size: 1.4rem;
+footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: 10vh;
+    background-color: #000;
 }
 
-.pagination span{
-	font-size: 1.1rem;
-	margin: 0 10px;
+.pagination {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #eee;
+    font-size: 1.4rem;
 }
 
-.pagination button{
-	font-size: 1.5rem;
+.pagination span {
+    font-size: 1.1rem;
+    margin: 0 10px;
 }
 
-button:active > *{
-	color: #8d8d8d;
+.pagination button {
+    font-size: 1.5rem;
 }
 
-footer ul{
-	list-style-type: none;
-	width: 100%;
-	height: 100%;
-	display:flex;
-	justify-content:space-between;
-	align-items:center;
-	position: relative;
+button:active > * {
+    color: #8d8d8d;
 }
 
-footer ul li:first-child{
-	margin-left: 20px;
+footer ul {
+    list-style-type: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
 }
 
-footer ul li:last-child{
-	margin-right: 20px;
+footer ul li:first-child {
+    margin-left: 20px;
 }
 
-#zoomValue{
-	display:inline-block;
-	font-size: 0.9rem;
-	width: 60px;
-	vertical-align:center;
+footer ul li:last-child {
+    margin-right: 20px;
 }
 
-#openPDF{
-	font-size: 1.2rem;
-	padding: 2px 5px;
-	font-weight: 700;
-	color:#eee;
+#zoomValue {
+    display: inline-block;
+    font-size: 0.9rem;
+    width: 60px;
+    vertical-align: center;
 }
 
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .pagination {
+        font-size: 1.2rem;
+    }
 
+    footer ul li {
+        margin: 0 10px;
+    }
 
+    footer ul li span,
+    footer ul li button {
+        font-size: 1.1rem;
+    }
+
+    footer ul li:last-child {
+        margin-right: 10px;
+    }
+
+    main h3 {
+        font-size: 1.5rem;
+    }
+
+    .pdf-viewer {
+        max-width: 90vw;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .pagination {
+        font-size: 1rem;
+    }
+
+    footer ul {
+        flex-direction: column;
+    }
+
+    footer ul li {
+        margin: 10px 0;
+    }
+
+    .pdf-viewer {
+        max-width: 100vw;
+    }
+}

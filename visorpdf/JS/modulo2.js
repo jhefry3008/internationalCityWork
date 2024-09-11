@@ -4,7 +4,7 @@ const viewer = document.querySelector('.pdf-viewer');
 let currentPDF = {};
 
 // URL del archivo PDF predeterminado
-const defaultPDFURL = 'pdf/prueba.pdf'; 
+const defaultPDFURL = 'pdf/MODULO2.pdf'; 
 
 function resetCurrentPDF() {
     currentPDF = {
@@ -29,18 +29,27 @@ function loadPDF(data) {
 
 function renderCurrentPage() {
     currentPDF.file.getPage(currentPDF.currentPage).then((page) => {
+        const scale = currentPDF.zoom;
+        const viewport = page.getViewport({ scale });
+
+        // Ajustar el tamaño del canvas según el tamaño disponible
+        const canvasContainerWidth = viewer.parentElement.clientWidth;
+        const scaleRatio = canvasContainerWidth / viewport.width;
+        const adjustedViewport = page.getViewport({ scale: scale * scaleRatio });
+
         var context = viewer.getContext('2d');
-        var viewport = page.getViewport({ scale: currentPDF.zoom });
-        viewer.height = viewport.height;
-        viewer.width = viewport.width;
+        viewer.height = adjustedViewport.height;
+        viewer.width = adjustedViewport.width;
 
         var renderContext = {
             canvasContext: context,
-            viewport: viewport
+            viewport: adjustedViewport
         };
+
         page.render(renderContext);
     });
-    currentPage.innerHTML = currentPDF.currentPage + ' of ' + currentPDF.countOfPages;
+
+    currentPage.innerHTML = `${currentPDF.currentPage} of ${currentPDF.countOfPages}`;
 }
 
 // Cargar el PDF predeterminado al cargar la página
@@ -72,4 +81,20 @@ document.getElementById('previous').addEventListener('click', () => {
         currentPDF.currentPage -= 1;
         renderCurrentPage();
     }
+});
+
+window.onbeforeprint = function() {
+    alert("La opción de imprimir está deshabilitada.");
+    return false; // Impide la impresión.
+};
+
+document.addEventListener('keydown', function (e) {
+    if (e.ctrlKey && e.key === 'p') {
+        e.preventDefault();
+        alert('La opción de imprimir está deshabilitada.');
+    }
+});
+
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
 });

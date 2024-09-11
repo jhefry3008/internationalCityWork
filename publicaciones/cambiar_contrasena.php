@@ -64,6 +64,8 @@ if (isset($_POST['cambiar_contrasena'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cambiar Contraseña</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="../img/internacional.png">
 </head>
 <body>
     <div class="container">

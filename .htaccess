@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /international/
+
+# Primero intenta servir el archivo PHP
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^\.]+)$ $1.php [L,QSA]
+
+# Luego intenta servir el archivo HTML si no se encontró un archivo PHP
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^\.]+)$ $1.html [L,QSA]

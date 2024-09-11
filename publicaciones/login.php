@@ -2,6 +2,35 @@
 session_start();
 include 'db_connect.php';
 
+// Función para verificar el estado de la cuenta
+function verificarEstadoCuenta($email) {
+    global $conn;
+    $query = "SELECT fecha_registro, estado FROM usuarios WHERE email = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $usuario = $result->fetch_assoc();
+
+    if ($usuario) {
+        $fecha_registro = new DateTime($usuario['fecha_registro']);
+        $hoy = new DateTime();
+        $intervalo = $hoy->diff($fecha_registro);
+
+        if ($intervalo->m >= 6 && $usuario['estado'] === 'activo') {
+            // Cambiar el estado a inactivo si han pasado 6 meses
+            $queryUpdate = "UPDATE usuarios SET estado = 'inactivo' WHERE email = ?";
+            $stmtUpdate = $conn->prepare($queryUpdate);
+            $stmtUpdate->bind_param('s', $email);
+            $stmtUpdate->execute();
+            return 'inactivo';
+        } else {
+            return $usuario['estado'];
+        }
+    }
+    return null;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre_usuario = $_POST['nombre_usuario'];
     $contrasena = $_POST['contrasena'];
@@ -13,18 +42,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $stmt->get_result();
     $usuario = $result->fetch_assoc();
 
-    // Verifica si el usuario existe y la contraseña es correcta
-    if ($usuario && password_verify($contrasena, $usuario['contrasena'])) {
-        $_SESSION['usuario_id'] = $usuario['id'];
-        $_SESSION['nombre_usuario'] = $usuario['nombre_usuario']; // Guarda el nombre del usuario
-        $_SESSION['rol'] = $usuario['rol'];
-        header("Location: index.php");
-        exit;
+    if ($usuario) {
+        // Verificar el estado de la cuenta del usuario
+        $estadoCuenta = verificarEstadoCuenta($usuario['email']);
+
+        if ($estadoCuenta === 'inactivo') {
+            echo "<div class='alert alert-danger' class='text-center' role='alert'>Cuenta inactiva.</div>";
+        } else {
+            // Verifica si el usuario existe y la contraseña es correcta
+            if (password_verify($contrasena, $usuario['contrasena'])) {
+                $_SESSION['usuario_id'] = $usuario['id'];
+                $_SESSION['nombre_usuario'] = $usuario['nombre_usuario'];
+                $_SESSION['rol'] = $usuario['rol'];
+                header("Location: index.php");
+                exit;
+            } else {
+                $error = "Credenciales incorrectas.";
+            }
+        }
     } else {
         $error = "Credenciales incorrectas.";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -35,7 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Incluir Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="../img/internacional.png">
-    <link rel="stylesheet" href="css/style.css">
+  
+    <link rel="stylesheet" href="css/login.css">
     <style>
 
         .container {

@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../img/internacional.png);
+    background-size: cover;
+    background-position: center;
+    font-family: 'bauhaus';
+}
+
+@font-face {
+    font-family: 'bauhaus';
+    src: url('../fonts/Bauhaus.woff2') format('woff2'),  /* Modern browsers */
+         url('../fonts/Bauhaus.woff') format('woff'),    /* Legacy modern browsers */
+         url('../fonts/Bauhaus_.ttf') format('truetype'); /* Safari, Android, iOS */
+    font-weight: normal;
+    font-style: normal;
+}

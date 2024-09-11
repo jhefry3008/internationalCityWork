@@ -20,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<div class='alert alert-danger' role='alert'>El correo electrónico ya está registrado.</div>";
     } else {
         // Insertar los datos en la base de datos
-        $query = "INSERT INTO usuarios (nombre_usuario, contrasena, rol, telefono, nombre_cliente, email) VALUES (?, ?, ?, ?, ?, ?)";
+        // Insertar los datos en la base de datos
+        $query = "INSERT INTO usuarios (nombre_usuario, contrasena, rol, telefono, nombre_cliente, email, fecha_registro, estado) VALUES (?, ?, ?, ?, ?, ?, CURRENT_DATE, 'activo')";
         $stmt = $conn->prepare($query);
         $stmt->bind_param('ssssss', $nombre_usuario, $contrasena, $rol, $telefono, $nombre_cliente, $email);
 
@@ -31,11 +32,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+// Función para verificar el estado de la cuenta
+function verificarEstadoCuenta($email) {
+    include 'db_connect.php';
+    
+    $query = "SELECT fecha_registro, estado, rol FROM usuarios WHERE email = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $usuario = $result->fetch_assoc();
+    
+    $fechaRegistro = new DateTime($usuario['fecha_registro']);
+    $fechaActual = new DateTime();
+    $intervalo = $fechaRegistro->diff($fechaActual);
+
+    // Solo los usuarios con rol de 'cliente' son afectados
+    if ($usuario['rol'] === 'cliente') {
+        // Verificar si han pasado 6 meses
+        if ($intervalo->m >= 6 && $usuario['estado'] === 'activo') {
+            // Cambiar el estado a inactivo si han pasado 6 meses
+            $queryUpdate = "UPDATE usuarios SET estado = 'inactivo' WHERE email = ?";
+            $stmtUpdate = $conn->prepare($queryUpdate);
+            $stmtUpdate->bind_param('s', $email);
+            $stmtUpdate->execute();
+            return 'inactivo';
+        }
+    }
+
+    return $usuario['estado']; // Devuelve el estado actual del usuario
+}
 
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,56 +82,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin: auto;
             padding: 20px;
         }
+
         .botones {
             margin-top: 20px;
             text-align: center;
         }
     </style>
 </head>
+
 <body>
     <div class="container form-container">
         <h1 class="text-center">Registrar Usuario</h1>
         <form method="post">
-    
-    <div class="form-group">
-        <label for="rol">Rol</label>
-        <select name="rol" id="rol" class="form-control">
-            <option value="cliente">Cliente</option>
-            <option value="admin">Administrador</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="nombre_cliente">Nombre</label>
-        <input type="text" name="nombre_cliente" id="nombre_cliente" class="form-control" placeholder="Nombre Completo o Razon Social" required>
-    </div>
-    <div class="form-group">
-        <label for="telefono">Número de Teléfono</label>
-        <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Número de Teléfono" required>
-    </div>
-    <div class="form-group">
-        <label for="email">Correo Electrónico</label>
-        <input type="email" name="email" id="email" class="form-control" placeholder="Correo Electrónico" required>
-    </div>
-    <div class="form-group">
-        <label for="nombre_usuario">Username</label>
-        <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-control" placeholder="Nombre de Usuario" required>
-    </div>
-    <div class="form-group">
-        <label for="contrasena">Contraseña</label>
-        <input type="password" name="contrasena" id="contrasena" class="form-control" placeholder="Contraseña" required>
-    </div>
-    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
-</form>
 
-        <div class="botones">
-            <button onclick="window.location.href='index.php';" class="btn btn-secondary">Volver</button>
-            <button onclick="window.location.href='ver_usuarios.php';" class="btn btn-danger btn-sm">Ver todos los usuarios registrados</button>
-        </div>
+            <div class="form-group">
+                <label for="rol">Rol</label>
+                <select name="rol" id="rol" class="form-control">
+                    <option value="cliente">Cliente</option>
+                    <option value="admin">Administrador</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nombre_cliente">Nombre</label>
+                <input type="text" name="nombre_cliente" id="nombre_cliente" class="form-control" placeholder="Nombre Completo o Razon Social" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Número de Teléfono</label>
+                <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Número de Teléfono" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Correo Electrónico" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre_usuario">Username</label>
+                <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-control" placeholder="Nombre de Usuario" required>
+            </div>
+            <div class="form-group">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" name="contrasena" id="contrasena" class="form-control" placeholder="Contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+        </form>
     </div>
+
+    <div class="botones">
+        <button onclick="window.location.href='index.php';" class="btn btn-secondary">Volver</button>
+        <button onclick="window.location.href='ver_usuarios.php';" class="btn btn-danger btn-sm">Ver todos los usuarios registrados</button>
+    </div>
+
 
     <!-- Incluir jQuery y Bootstrap JS al final del documento -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

@@ -62,8 +62,7 @@ h1.mt-4.mb-4 {
 }
 
 /* Estilos para el área de administrador */
-.admin {
-    background-color: #06779d;
+.admin {  background-color: rgb(255, 255, 255);
     border-radius: 8px;
     padding: 20px;
     margin: 20px 0;
@@ -71,9 +70,9 @@ h1.mt-4.mb-4 {
 }
 
 .admin h2 {
-    background-color: #06779d;
+    background-color: rgb(255, 255, 255);
     margin-bottom: 20px;
-    color: white;
+    color: #06779d;
     text-align: center;
 }
 
@@ -81,7 +80,7 @@ h1.mt-4.mb-4 {
     display: flex;
     justify-content: center;
     gap: 10px; /* Espacio entre botones */
-      background-color: #06779d;
+    background-color: rgb(255, 255, 255);
 }
 
 .opciones-container a {
@@ -99,6 +98,11 @@ h1.mt-4.mb-4 {
     transform: scale(1.05);
 }
 
+.container-index {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
 
 
