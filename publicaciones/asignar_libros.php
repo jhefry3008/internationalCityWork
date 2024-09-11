@@ -115,7 +115,7 @@ if (isset($_SESSION['cliente_id'])) {
 </head>
 <body>
     <div class="container mt-5">
-        <h1>Asignar y Eliminar Libros a Clientes</h1>
+        <h1>Asignar y Eliminar Libros a Clientes</h1> <hr class="asignar">
 
         <?php if (!isset($_SESSION['cliente_id'])): ?>
             <form method="post">

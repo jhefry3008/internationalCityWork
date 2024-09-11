@@ -21,6 +21,7 @@ body, html {
     border-radius: 10px;
     padding: 15px;
     text-align: center;
+    background-color: #ffffff57;
     transition: transform 0.2s ease-in-out;
 
 }
@@ -131,8 +132,34 @@ h6{
 
     
 }
+h6.nota{
+    color: black;
+}
+/*Contenido de descripcion */
+.contenido{
+    box-shadow: 10px 10px 10px rgba(108, 180, 228, 0.534);
+    border: 3px solid rgba(108, 180, 228, 0.534);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #ffffff57;
+}
 
-
+h2.estilo-titulo{
+    color: #06779d;
+    font-family: 'bauhaus';
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+strong{
+    color: #06779d;
+}
+.mb-4{
+    font-size: 60px;
+}
 /* modal*/
 
 .payment-options {
@@ -184,5 +211,12 @@ h6{
 
 .modal-body{
     background: rgba(81, 123, 136, 0.679)
+}
+/*Total a pagar*/
+.mt-4{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 

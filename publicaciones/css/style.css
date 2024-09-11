@@ -282,7 +282,7 @@ footer a:hover {
 
 /* Estilo de los botones */
 button.btn-block {
-    background-color: #007bff; /* Color azul de Bootstrap */
+    background-color: #06779d; /* Color azul de Bootstrap */
     border: none; /* Eliminar borde */
     transition: background-color 0.3s ease; /* Transición en el hover */
 }
@@ -349,33 +349,33 @@ h1, h2, h3 {
 
 /* Estilo para los botones */
 .btn-primary {
-    background-color: #007bff; /* Color azul de Bootstrap */
+    background-color: #06779d; /* Color azul de Bootstrap */
     border: none; /* Eliminar borde */
     transition: background-color 0.3s ease; /* Transición en el hover */
 }
 
 .btn-primary:hover {
-    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+    background-color: #005673; /* Azul más oscuro al pasar el mouse */
 }
 
 .btn-secondary {
-    background-color: #6c757d; /* Color gris de Bootstrap */
+    background-color: #06779d; /* Color gris de Bootstrap */
     border: none; /* Eliminar borde */
     transition: background-color 0.3s ease; /* Transición en el hover */
 }
 
 .btn-secondary:hover {
-    background-color: #5a6268; /* Gris más oscuro al pasar el mouse */
+    background-color: #055e7c; /* Gris más oscuro al pasar el mouse */
 }
 
 .btn-danger {
-    background-color: #dc3545; /* Color rojo de Bootstrap */
+    background-color: #f96946; /* Color rojo de Bootstrap */
     border: none; /* Eliminar borde */
     transition: background-color 0.3s ease; /* Transición en el hover */
 }
 
 .btn-danger:hover {
-    background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
+    background-color: #cf593c /* Rojo más oscuro al pasar el mouse */
 }
 
 /* Estilo para las listas de libros */
@@ -396,4 +396,26 @@ h1, h2, h3 {
 /* Estilo para los formularios en línea */
 form[style="display:inline;"] {
     display: inline-block;
+}
+
+
+hr {
+    height: 5px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    background: #f96946;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    
+}
+hr.asignar {
+    height: 5px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    background: #f96946;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    
 }

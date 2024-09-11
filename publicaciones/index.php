@@ -14,6 +14,7 @@ $rol = $_SESSION['rol'];  // Asumiendo que guardaste el rol del usuario en la se
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +27,7 @@ $rol = $_SESSION['rol'];  // Asumiendo que guardaste el rol del usuario en la se
     <!-- Incluir tu archivo CSS -->
     <link href="styles.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container-index">
         <h1 class="mt-4 mb-4">Bienvenido, <?php echo isset($_SESSION['nombre_usuario']) ? htmlspecialchars($_SESSION['nombre_usuario']) : 'Invitado'; ?>!</h1>
@@ -33,18 +35,37 @@ $rol = $_SESSION['rol'];  // Asumiendo que guardaste el rol del usuario en la se
         <!-- Si el usuario es administrador -->
         <?php if ($rol === 'admin'): ?>
             <div class="admin">
-                <h2>Opciones de Administrador</h2>
+                <h2>Opciones de Administrador</h2> <hr>
                 <div class="opciones-container">
-                    <a href="registro.php" class="btn btn-primary">Registrar Usuario</a>
-                    <a href="asignar_libros.php" class="btn btn-primary">Asignar Libros a Clientes</a>
-                    <a href="admin.php" class="btn btn-primary">Administrar Libros</a>
+                    <!-- Envuelve los botones en un contenedor de fila y columna -->
+                    <div class="row">
+                        <div class="col-12 col-md-4 mb-3">
+                            <a href="registro.php" class="btn btn-primary btn-block">Registrar Usuario</a>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <a href="asignar_libros.php" class="btn btn-primary btn-block">Asignar Libros a Clientes</a>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <a href="admin.php" class="btn btn-primary btn-block">Administrar Libros</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <style>
+                .row {
+                    background-color: rgb(255, 255, 255);
+                }
 
-        <!-- Si el usuario es cliente -->
+                .col-12 {
+                    background-color: rgb(255, 255, 255);
+                }
+            </style>
+
+
+            <!-- Si el usuario es cliente -->
         <?php elseif ($rol === 'cliente'): ?>
             <div class="cliente">
-                <h2>Libros Disponibles</h2>
+                <h2 style="text-align: center;">Libros para ti</h2> <hr>
                 <?php
                 $usuario_id = $_SESSION['usuario_id'];
 
@@ -89,4 +110,5 @@ $rol = $_SESSION['rol'];  // Asumiendo que guardaste el rol del usuario en la se
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

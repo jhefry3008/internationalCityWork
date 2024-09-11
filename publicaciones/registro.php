@@ -92,7 +92,7 @@ function verificarEstadoCuenta($email) {
 
 <body>
     <div class="container form-container">
-        <h1 class="text-center">Registrar Usuario</h1>
+        <h1 class="text-center">Registrar Usuario</h1> <hr>
         <form method="post">
 
             <div class="form-group">

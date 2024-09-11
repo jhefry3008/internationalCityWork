@@ -95,6 +95,7 @@ $resultLibros = $conn->query($queryLibros);
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -106,46 +107,50 @@ $resultLibros = $conn->query($queryLibros);
         .custom-container {
             margin-top: 20px;
         }
+
         .custom-table img {
             width: 100px;
             height: auto;
         }
     </style>
 </head>
+
 <body>
     <div class="container custom-container">
-        <h1 class="text-center mb-4">Administrar Libros</h1>
+        <h1 class="text-center mb-4">Administrar Libros</h1> <hr>
 
         <!-- Mostrar libros existentes -->
         <div class="mb-4">
             <h2>Libros Creados</h2>
-            <table class="table table-bordered custom-table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Título</th>
-                        <th>Contenido</th>
-                        <th>PDF</th>
-                        <th>Portada</th>
-                          <!--<th>Acciones</th>-->
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($libro = $resultLibros->fetch_assoc()): ?>
+            <div class="table-responsive">
+                <table class="table table-bordered custom-table">
+                    <thead class="thead-dark">
                         <tr>
-                            <td><?php echo htmlspecialchars($libro['titulo']); ?></td>
-                            <td><?php echo htmlspecialchars($libro['contenido']); ?></td>
-                            <td><a href="<?php echo htmlspecialchars($libro['pdf_url']); ?>" target="_blank" class="btn btn-info btn-sm">Ver PDF</a></td>
-                            <td><img src="<?php echo htmlspecialchars($libro['portada_url']); ?>" alt="Portada"></td>
-                            <!-- <td>
+                            <th>Título</th>
+                            <th>Contenido</th>
+                            <th>PDF</th>
+                            <th>Portada</th>
+                            <!--<th>Acciones</th>-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($libro = $resultLibros->fetch_assoc()): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($libro['titulo']); ?></td>
+                                <td><?php echo htmlspecialchars($libro['contenido']); ?></td>
+                                <td><a href="<?php echo htmlspecialchars($libro['pdf_url']); ?>" target="_blank" class="btn btn-primary btn-sm">Ver PDF</a></td>
+                                <td><img src="<?php echo htmlspecialchars($libro['portada_url']); ?>" alt="Portada"></td>
+                                <!-- <td>
                                 <form method="post" style="display:inline;">
                                     <input type="hidden" name="eliminar_libro_id" value="<?php echo $libro['id']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                 </form>
                             </td>-->
-                        </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- Formulario para crear un nuevo libro 
@@ -182,5 +187,5 @@ $resultLibros = $conn->query($queryLibros);
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-</html>
 
+</html>
