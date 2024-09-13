@@ -69,7 +69,7 @@ if (isset($_POST['cambiar_contrasena'])) {
 </head>
 <body>
     <div class="container">
-        <h1 class="my-4">Cambiar Contraseña</h1>
+        <h1 class="my-4" style="text-align: center;">Cambiar Contraseña</h1> <hr>
 
         <?php if (isset($error)): ?>
             <div class="alert alert-danger" role="alert">

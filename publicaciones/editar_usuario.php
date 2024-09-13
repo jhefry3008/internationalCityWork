@@ -58,7 +58,7 @@ if (isset($_POST['actualizar_usuario'])) {
 </head>
 <body>
     <div class="container">
-        <h1 class="my-4">Editar Usuario</h1>
+        <h1 class="my-4" style="text-align: center;">Editar Usuario</h1> <hr>
 
         <form method="post">
             <div class="form-group">
