@@ -18,7 +18,7 @@ button{
 
 body{
 	font-family: 'Lato', sans-serif;
-	background-color: #171717;
+	background-color: rgb(192, 222, 228);
 }
 
 main{
@@ -40,11 +40,16 @@ main h3{
 	color: #bbbbbb;
 }
 
-.pdf-viewer{
-	background-color: #333;
-	background-color: #fff;
-	margin: auto;
+.pdf-viewer {
+    background-color: #fff;
+    margin: auto;
+    display: block;
+    max-width: 100%;  /* Para pantallas más grandes, que no se pase del 100% del ancho */
+    height: auto;  /* Mantiene la relación de aspecto del canvas */
+	border-radius: 30px;
+
 }
+
 
 .hidden{
 	display:none;
@@ -114,14 +119,17 @@ footer ul li:last-child{
 /* Media queries para hacer que el PDF viewer sea responsive */
 @media (max-width: 768px) {
     .pdf-viewer {
-      height: 300px;
+        width: 90%;  /* Que el canvas ocupe el 90% del ancho de la pantalla */
+        height: auto;  /* Mantiene las proporciones del contenido */
     }
-  }
+}
   
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
     .pdf-viewer {
-      height: 200px;
+        width: 100%;  /* Ocupar el 100% del ancho de la pantalla */
+        height: auto;  /* Ajustar la altura automáticamente */
     }
+
     footer {
       flex-direction: column;
       align-items: center;
